@@ -1,20 +1,13 @@
 package com.mycompany.proyectobuses;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+import java.util.ArrayList;
 
-/**
- *
- * @author jmong
- */
 public class Terminal {
     private String Nombre;
     private String Ubicacion;
     private int MaximoAutobuses;
     private int NumeroAutobuses;
-    //private ArrayList<Autobuses>Buses;
+    private ArrayList<Autobus>Bus;
 
     public String getNombre() {
         return Nombre;
@@ -48,5 +41,31 @@ public class Terminal {
         this.NumeroAutobuses = NumeroAutobuses;
     }
     
+    public void agregarAutobus(Autobus bus){
+        this.Bus.add(bus);
+    }
     
+    public void actualizarAutobus(int index, String nombre, String ruta, int maximoPasajeros, int numeroPasajeros)
+    {
+        Autobus updateAutobus = new Autobus();
+        updateAutobus.setNombre(nombre);
+        updateAutobus.setRuta(ruta);
+        updateAutobus.setMaximoPasajeros(maximoPasajeros);
+        updateAutobus.setNumeroPasajeros(numeroPasajeros);
+        
+        this.Bus.set(index, updateAutobus);        
+    }
+    
+    public void listarBuses(){ 
+        for (int i = 0; i < this.Bus.size(); i++)
+        {
+            String nombre = "";
+            nombre = this.Bus.get(i).getNombre();
+            System.out.println("Bus: " + nombre);
+        }
+    }
+
+    public ArrayList<Autobus> obtenerBuses(){
+        return this.Bus;
+    }    
 }
